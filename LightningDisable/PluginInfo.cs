@@ -1,0 +1,12 @@
+﻿namespace LightningDisable
+{
+    /// <summary>
+    /// This class is used to provide information about your mod to BepInEx.
+    /// </summary>
+    internal class PluginInfo
+    {
+        public const string GUID = "com.rushkiller.gorillatag.lightningdisable";
+        public const string Name = "LightningDisable";
+        public const string Version = "1.0.0";
+    }
+}
