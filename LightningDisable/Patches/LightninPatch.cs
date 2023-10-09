@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 namespace LightningDisable.Patches
 {
@@ -9,20 +10,24 @@ namespace LightningDisable.Patches
     [HarmonyPatch("DoLightningStrike", MethodType.Normal)]
     internal class LightninPatch
     {
-        private static void Prefix(LightningManager __instance)
+        private static bool Prefix(LightningManager __instance)
         {
             __instance.enabled = false;
             __instance.StopCoroutine("LightningEffectRunner");
+            Component.Destroy(__instance);
+            return false;
         }
     }
     [HarmonyPatch(typeof(LightningManager))]
     [HarmonyPatch("Start", MethodType.Normal)]
     internal class LightninPatch2
     {
-        private static void Prefix(LightningManager __instance)
+        private static bool Prefix(LightningManager __instance)
         {
             __instance.enabled = false;
             __instance.StopCoroutine("LightningEffectRunner");
+            Component.Destroy(__instance);
+            return false;
         }
     }
 }

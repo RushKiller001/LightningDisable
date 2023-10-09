@@ -8,10 +8,7 @@ namespace LightningDisable
     [BepInPlugin(PluginInfo.GUID, PluginInfo.Name, PluginInfo.Version)]
     public class Plugin : BaseUnityPlugin
     {
-        void OnEnable()
+        void Awake()
         {HarmonyPatches.ApplyHarmonyPatches();}
-
-        void OnDisable()
-        {HarmonyPatches.RemoveHarmonyPatches();}
     }
 }
